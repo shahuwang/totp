@@ -48,10 +48,9 @@ func clip(key string, length, step int64) {
 		fmt.Println(err)
 		return
 	}
-	fmt.Printf("The code is %s, %d seconds left, the code is copied to clipboard\n", code, left)
 	path, err := exec.LookPath("xsel")
 	if err != nil {
-		fmt.Println(err)
+		fmt.Printf("The code is %s, %d seconds left, but not being copied to clipboard as no executable xsel")
 		fmt.Println("May be you should install xsel by apt-get install xsel")
 		return
 	}
@@ -62,7 +61,7 @@ func clip(key string, length, step int64) {
 		fmt.Println(err)
 		return
 	}
-
+	fmt.Printf("The code is %s, %d seconds left, the code is copied to clipboard\n", code, left)
 }
 
 func totp(key string, length, step int64) (string, int64, error) {
